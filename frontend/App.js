@@ -24,12 +24,12 @@ export const styles = StyleSheet.create({
     backgroundColor: "#181922",
     alignItems: "center",
     justifyContent: "center",
-    gap: "1rem",
-    padding: "2rem",
+    gap: "15px",
+    padding: "30px",
   },
   paragraph: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: "2rem",
+    fontSize: "30px",
   },
 });

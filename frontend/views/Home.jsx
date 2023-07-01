@@ -8,7 +8,7 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={homeStyle.title}>SHUFFLE</Text>
+      <Text style={homeStyle.title}>SHUFFLES</Text>
       <Image
         source={{
           uri: "https://cdn.discordapp.com/attachments/1124528655784222740/1124662573032284303/cassette.png",
@@ -23,7 +23,7 @@ export default function Home({ navigation }) {
         <MaterialCommunityIcon name="magnify" size={30} color="#ffffff" />
         <TextInput
           style={homeStyle.searchBox}
-          placeholder="Go to next screen"
+          placeholder="Search for your destination"
           onChange={setText}
         />
       </View>
@@ -36,18 +36,18 @@ const homeStyle = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     backgroundColor: "#3D3F59",
-    borderRadius: "2rem",
-    padding: "1rem",
-    gap: "0.5rem",
+    borderRadius: "30px",
+    padding: "15px",
+    gap: "7px",
   },
   searchBox: {
-    fontSize: "1.5rem",
+    fontSize: "30px",
     fontWeight: "bold",
     color: "#676a88",
   },
   title: {
     color: "#D471E4",
     fontWeight: "bold",
-    fontSize: "4rem",
+    fontSize: "60px",
   }
 });
