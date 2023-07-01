@@ -1,11 +1,94 @@
-import React from "react";
-import { Button, View, Text } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { styles } from "../App";
+import { useState } from "react";
 
-export default function Tags({ navigation }) {
+let tags = ["pop", "rock", "electronic", "indie", "metal", "blues"].map((x) => {
+  return {
+    selected: false,
+    name: x,
+  };
+});
+
+export default function Tags({ route, navigation }) {
+  const { location } = route.params;
+
+  const [selectedTags, setSelectedTags] = useState(tags);
+
+  const Tag = ({ tag, selected }) => {
+    return (
+      <View>
+        <Pressable
+          style={selected ? tagStyles.selected : tagStyles.unselected}
+          onPress={() =>
+            setSelectedTags((prev) =>
+              prev.map((x) =>
+                x.name === tag ? { name: tag, selected: !x.selected } : x
+              )
+            )
+          }
+        >
+          <Text style={tagStyles.tagText}>{`#${tag}`}</Text>
+        </Pressable>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.paragraph}>Tags screen</Text>
+      <Text style={styles.paragraph}>
+        Select 3 or more <Text style={{ color: "#D471E4" }}>genres</Text>
+      </Text>
+      <View style={tagsStyles.tagsContainer}>
+        {selectedTags.map((t) => (
+          <Tag tag={t.name} selected={t.selected} />
+        ))}
+      </View>
+      <Pressable
+        title="submit"
+        style={styles.button}
+        onPressOut={() =>
+          navigation.navigate("Playlist", {
+            location: location,
+            genres: selectedTags.filter((x) => x.selected).map((x) => x.name),
+          })
+        }
+      >
+        <Text style={styles.buttonText}>Submit</Text>
+      </Pressable>
     </View>
   );
-};
+}
+
+const tagsStyles = StyleSheet.create({
+  tagsContainer: {
+    display: "flex",
+    gap: 10,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+});
+
+const tagStyles = StyleSheet.create({
+  selected: {
+    backgroundColor: "#3440AA",
+    color: "#FFFFFF",
+    borderRadius: 10,
+    padding: 12,
+  },
+  unselected: {
+    backgroundColor: "#181922",
+    color: "#FFFFFF",
+    borderRadius: 10,
+    padding: 10,
+    fontWeight: "bold",
+    fontSize: 20,
+    borderWidth: 2,
+    borderColor: "#FFFFFF",
+  },
+  tagText: {
+    fontFamily: "Arial",
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#FFFFFF",
+  },
+});
