@@ -12,9 +12,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Tags" component={Tags} />
-        <Stack.Screen name="Playlist" component={Playlist} />
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
+        <Stack.Screen name="Tags" component={Tags} options={{ headerShown: false }}/>
+        <Stack.Screen name="Playlist" component={Playlist} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -44,5 +44,8 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     fontFamily: "Arial",
+  },
+  headerStyle: {
+    backgroundColor: '#181922',
   },
 });
