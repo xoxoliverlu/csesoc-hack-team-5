@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   Pressable,
+  StatusBar,
 } from "react-native";
 import { styles } from "../App";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";

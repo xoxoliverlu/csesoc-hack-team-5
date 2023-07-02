@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, StatusBar } from "react-native";
 import { styles } from "../App";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ export default function Tags({ route, navigation }) {
             )
           }
         >
-          <Text style={tagStyles.tagText}>{`#${tag}`}</Text>
+          <Text style={tagStyles.tagText}>{tag}</Text>
         </Pressable>
       </View>
     );
