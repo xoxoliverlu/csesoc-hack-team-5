@@ -15,10 +15,9 @@ export default function Playlist({ route, navigator }) {
 
   const [tracks, setTracks] = useState([]);
   const [sound, setSound] = useState();
+  const [selectedSound, setSelectedSound] = useState("");
 
   useEffect(() => {
-    console.log(location, genres);
-
     const fetchData = async () => {
       fetch(`${BE_URL}/tracks`, {
         method: "POST",
@@ -38,6 +37,7 @@ export default function Playlist({ route, navigator }) {
   }, []);
 
   const playTrack = async (url) => {
+    setSelectedSound(url);
     const { sound } = await Audio.Sound.createAsync(url);
     await sound.playAsync();
     setSound(sound);
@@ -66,16 +66,29 @@ export default function Playlist({ route, navigator }) {
           </View>
         </View>
         <Pressable onPress={() => playTrack(streamURL)}>
-          <MaterialCommunityIcon
-            name="play"
-            size={30}
-            color="#ffffff"
-            style={{
-              backgroundColor: "#c29df1",
-              borderRadius: 100,
-              padding: 2,
-            }}
-          />
+          {selectedSound === streamURL ? (
+            <MaterialCommunityIcon
+              name="pause"
+              size={30}
+              color="#ffffff"
+              style={{
+                backgroundColor: "#c29df1",
+                borderRadius: 100,
+                padding: 2,
+              }}
+            />
+          ) : (
+            <MaterialCommunityIcon
+              name="play"
+              size={30}
+              color="#ffffff"
+              style={{
+                backgroundColor: "#c29df1",
+                borderRadius: 100,
+                padding: 2,
+              }}
+            />
+          )}
         </Pressable>
       </View>
     );
@@ -86,24 +99,26 @@ export default function Playlist({ route, navigator }) {
       <Text style={styles.paragraph}>
         <Text style={{ color: "#f3bce6" }}>Explore</Text> your playlist
       </Text>
-      <View
-        style={{
-          display: "flex",
-          backgroundColor: "#1a1823",
-          borderRadius: 20,
-          padding: 10,
-        }}
-      >
-        {tracks.map((t, i) => (
-          <Track
-            imageURL={t.imageURL}
-            name={t.name}
-            artist={t.artist}
-            streamURL={t.streamURL}
-            n={i + 1}
-          />
-        ))}
-      </View>
+      {tracks.length > 0 ? (
+        <View
+          style={{
+            display: "flex",
+            backgroundColor: "#1a1823",
+            borderRadius: 20,
+            padding: 10,
+          }}
+        >
+          {tracks.map((t, i) => (
+            <Track
+              imageURL={t.imageURL}
+              name={t.name}
+              artist={t.artist}
+              streamURL={t.streamURL}
+              n={i + 1}
+            />
+          ))}
+        </View>
+      ) : null}
     </View>
   );
 }
