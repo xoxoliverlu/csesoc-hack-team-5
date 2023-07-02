@@ -16,22 +16,18 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={homeStyle.title}>SHUFFLES</Text>
-      <Image
-        source={{
-          uri: "https://cdn.discordapp.com/attachments/1124528655784222740/1124662573032284303/cassette.png",
-        }}
-        style={{ width: 200, height: 200 }}
-      />
+      <Text style={homeStyle.title}>
+        shuffles<Text style={{ fontFamily: "Gill Sans", fontSize: 45 }}>.</Text>
+      </Text>
       <Text style={styles.paragraph}>
         Generate a{" "}
-        <Text style={{ color: "#D471E4" }}>curated travel soundtrack</Text>
+        <Text style={{ color: "#f3bce6" }}>curated travel soundtrack</Text>
       </Text>
-      <View style={homeStyle.container}>
+      <View style={homeStyle.searchContainer}>
         <MaterialCommunityIcon name="magnify" size={30} color="#ffffff" />
         <TextInput
           style={homeStyle.searchBox}
-          placeholder="Search for your destination"
+          placeholder="Search your destination"
           onChange={(e) => setText(e.target.value)}
         />
       </View>
@@ -55,14 +51,23 @@ const homeStyle = StyleSheet.create({
     padding: 15,
     gap: 15,
   },
+  searchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "#3D3F59",
+    borderRadius: 45,
+    padding: 15,
+    gap: 15,
+  },
   searchBox: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#676a88",
   },
   title: {
-    color: "#D471E4",
+    color: "#c29df1",
     fontWeight: "bold",
     fontSize: 60,
+    fontFamily: "Arial",
   },
 });

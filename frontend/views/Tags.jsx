@@ -2,7 +2,26 @@ import { View, Text, StyleSheet, Pressable, StatusBar } from "react-native";
 import { styles } from "../App";
 import { useState } from "react";
 
-let tags = ["pop", "rock", "electronic", "indie", "metal", "blues"].map((x) => {
+let tags = [
+  "pop",
+  "rock",
+  "electronic",
+  "indie",
+  "metal",
+  "rap",
+  "blues",
+  "folk",
+  "r&b",
+  "country",
+  "jazz",
+  "synthpop",
+  "classical",
+  "breakcore",
+  "instrumental",
+  "techno",
+  "house",
+  "shoegaze",
+].map((x) => {
   return {
     selected: false,
     name: x,
@@ -36,7 +55,7 @@ export default function Tags({ route, navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>
-        Select 3 or more <Text style={{ color: "#D471E4" }}>genres</Text>
+        Select 3 or more <Text style={{ color: "#f3bce6" }}>genres</Text>
       </Text>
       <View style={tagsStyles.tagsContainer}>
         {selectedTags.map((t) => (
@@ -70,13 +89,13 @@ const tagsStyles = StyleSheet.create({
 
 const tagStyles = StyleSheet.create({
   selected: {
-    backgroundColor: "#3440AA",
+    backgroundColor: "#c29df1",
     color: "#FFFFFF",
     borderRadius: 10,
     padding: 12,
   },
   unselected: {
-    backgroundColor: "#181922",
+    backgroundColor: "#24273a",
     color: "#FFFFFF",
     borderRadius: 10,
     padding: 10,

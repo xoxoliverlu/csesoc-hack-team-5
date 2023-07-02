@@ -52,7 +52,7 @@ export default function Playlist({ route, navigator }) {
     return (
       <View style={tagStyles.card}>
         <View style={tagStyles.card}>
-          <Text style={tagStyles.songText}>{n}</Text>
+          <Text style={tagStyles.songText}>{n} </Text>
           <Image style={{ width: 50, height: 50 }} source={{ uri: imageURL }} />
           <View
             style={{
@@ -70,7 +70,11 @@ export default function Playlist({ route, navigator }) {
             name="play"
             size={30}
             color="#ffffff"
-            style={{ backgroundColor: "#D471E4", borderRadius: 100 }}
+            style={{
+              backgroundColor: "#c29df1",
+              borderRadius: 100,
+              padding: 2,
+            }}
           />
         </Pressable>
       </View>
@@ -79,8 +83,17 @@ export default function Playlist({ route, navigator }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.paragraph}>Your playlist is ready</Text>
-      <View style={{ display: "flex" }}>
+      <Text style={styles.paragraph}>
+        <Text style={{ color: "#f3bce6" }}>Explore</Text> your playlist
+      </Text>
+      <View
+        style={{
+          display: "flex",
+          backgroundColor: "#1a1823",
+          borderRadius: 20,
+          padding: 10,
+        }}
+      >
         {tracks.map((t, i) => (
           <Track
             imageURL={t.imageURL}

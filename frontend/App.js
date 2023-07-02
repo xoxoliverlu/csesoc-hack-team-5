@@ -5,6 +5,7 @@ import { AppRegistry, StyleSheet, Text, View } from "react-native";
 import Home from "./views/Home";
 import Tags from "./views/Tags";
 import Playlist from "./views/Playlist";
+import Splash from "./views/Splash";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -35,7 +41,7 @@ export default function App() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#181922",
+    backgroundColor: "#24273a",
     alignItems: "center",
     justifyContent: "center",
     gap: 15,
@@ -47,7 +53,7 @@ export const styles = StyleSheet.create({
     fontSize: 30,
   },
   button: {
-    backgroundColor: "#3440AA",
+    backgroundColor: "#c29df1",
     borderRadius: 45,
     padding: 15,
   },
